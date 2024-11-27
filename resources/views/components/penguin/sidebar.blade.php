@@ -73,7 +73,8 @@
                     </svg>
                 </button>
 
-                <ul x-cloak x-collapse x-show="isExpanded" aria-labelledby="user-management-btn" id="user-management">
+                <ul x-cloak x-collapse x-show="isExpanded" aria-labelledby="user-management-btn" id="user-management"
+                    class="{{ in_array(Request::segment(1), ['user-management']) ? 'bg-sky-700/10 dark:text-zinc-50 dark:bg-sky-600/10' : '' }}">
                     <li class="px-1 py-0.5 first:mt-2">
                         <a wire:navigate href="{{ route('user-management.users.index') }}"
                             class="flex items-center rounded gap-2 px-2 py-1.5 text-sm text-neutral-600 underline-offset-2 hover:bg-sky-700/5 hover:text-neutral-900 focus:outline-none focus-visible:underline dark:text-zinc-200 dark:hover:bg-sky-600/5 dark:hover:text-zinc-50
