@@ -19,6 +19,10 @@ Component that intergrated with Livewire:
 
 This StarterKit is accessible, fun to work with, and provides tools required for build Laravel application.
 
+## Screenshoot
+
+<img src="public/img/ss01.jpg" width="400" alt="Screenshoot 01">
+
 ## Contributing
 
 Everyone can contribute to this StarterKit.
