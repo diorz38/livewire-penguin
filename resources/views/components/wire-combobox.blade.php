@@ -9,12 +9,12 @@
         this.selectedOption = option
         this.isOpen = false
         this.openedWithKeyboard = false
-        this.$refs.hiddenTextField.value = option.value
+        this.$refs.hiddenTextField = option
     },
     getFilteredOptions(query) {
-        // this.options = this.allOptions.filter((option) =>
-        //     option.toLowerCase().includes(query.toLowerCase()),
-        // )
+        this.options = this.allOptions.filter((option) =>
+            option.toLowerCase().includes(query.toLowerCase()),
+        )
         if (this.options.length === 0) {
             this.$refs.noResultsMessage.classList.remove('hidden')
         } else {
@@ -41,7 +41,7 @@
     </button>
 
     <!-- Hidden Input To Grab The Selected Value  -->
-    <input id="make" name="make" x-ref="hiddenTextField" hidden="" value="@entangle($property).live"/>
+    <input id="make" name="make" x-ref="hiddenTextField" hidden=""/>
     <div x-show="isOpen || openedWithKeyboard" id="makesList" class="absolute left-0 z-10 w-full overflow-hidden border rounded-md top-11 border-neutral-300 bg-neutral-50 dark:border-neutral-700 dark:bg-neutral-900" role="listbox" aria-label="industries list" x-on:click.outside="isOpen = false, openedWithKeyboard = false" x-on:keydown.down.prevent="$focus.wrap().next()" x-on:keydown.up.prevent="$focus.wrap().previous()" x-transition x-trap="openedWithKeyboard">
 
         <!-- Search  -->
