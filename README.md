@@ -21,7 +21,7 @@ This StarterKit is accessible, fun to work with, and provides tools required for
 
 ## Screenshoot
 
-<img src="public/img/ss01.jpg" width="400" alt="Screenshoot 01">
+<img src="public/img/ss01.jpg" alt="Screenshoot 01">
 
 ## Contributing
 
