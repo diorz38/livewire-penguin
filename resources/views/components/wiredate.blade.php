@@ -1,4 +1,4 @@
-<div wire:ignore x-data="datepicker(@entangle($attributes->wire('model')))">
+<div x-data="datepicker(@entangle($attributes->wire('model')))">
     <div class="flex flex-row items-center gap-2 py-3">
         {{-- Date --}}
         <div class="relative">
@@ -9,28 +9,70 @@
     </div>
 </div>
 
-@once
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
-    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+@push('scripts')
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+@endpush
 
-    <script wire:ignore>
-        document.addEventListener('alpine:init', function() {
-            Alpine.data('datepicker', (model) => ({
-                selectedDate: model,
-                init() {
-                    this.picker = flatpickr(this.$refs.dateData, {
-                        dateFormat: "Y-m-d"
-                    });
-                    // console.log(model);
-                    // this.$watch('value', function(newValue) {
-                    //     this.picker.setDate(newValue);
-                    //     console.log(newValue);
-                    // }.bind(this)); // not working...
-                },
-                reset() {
-                    this.selectedDate = null;
-                }
-            }))
-        })
-    </script>
-@endonce
+<script>
+    document.addEventListener('livewire:navigated', handler, false);
+    document.addEventListener('alpine:init', handler, false);
+
+    function handler() {
+        Alpine.data('datepicker', (model) => ({
+            selectedDate: model,
+            init() {
+                this.picker = flatpickr(this.$refs.dateData, {
+                    dateFormat: "Y-m-d"
+                });
+                // console.log(model);
+                // this.$watch('value', function(newValue) {
+                //     this.picker.setDate(newValue);
+                //     console.log(newValue);
+                // }.bind(this)); // not working...
+            },
+            reset() {
+                this.selectedDate = null;
+            }
+        }));
+    }
+</script>
+
+{{-- <script>
+    document.addEventListener('alpine:init', function() {
+        Alpine.data('datepicker', (model) => ({
+            selectedDate: model,
+            init() {
+                this.picker = flatpickr(this.$refs.dateData, {
+                    dateFormat: "Y-m-d"
+                });
+                // console.log(model);
+                // this.$watch('value', function(newValue) {
+                //     this.picker.setDate(newValue);
+                //     console.log(newValue);
+                // }.bind(this)); // not working...
+            },
+            reset() {
+                this.selectedDate = null;
+            }
+        }))
+    })
+    document.addEventListener('livewire:navigated', function() {
+        Alpine.data('datepicker', (model) => ({
+            selectedDate: model,
+            init() {
+                this.picker = flatpickr(this.$refs.dateData, {
+                    dateFormat: "Y-m-d"
+                });
+                // console.log(model);
+                // this.$watch('value', function(newValue) {
+                //     this.picker.setDate(newValue);
+                //     console.log(newValue);
+                // }.bind(this)); // not working...
+            },
+            reset() {
+                this.selectedDate = null;
+            }
+        }))
+    })
+</script> --}}

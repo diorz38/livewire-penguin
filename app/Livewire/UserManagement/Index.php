@@ -6,8 +6,8 @@ use Livewire\Component;
 
 class Index extends Component
 {
-    public $startDate = '2022-01-01';
-    public $endDate = '2022-12-31';
+    public $startDate;
+    public $endDate;
     public $merkMobil = [];
     public $merk = 'Toyota';
     public $charData = [];
@@ -15,6 +15,8 @@ class Index extends Component
     public function mount()
     {
         $this->merkMobil = ['Toyota', 'Honda', 'Mitsubishi'];
+        $this->startDate = '2023-01-01';
+        $this->endDate = '2023-12-31';
     }
     public function render()
     {
