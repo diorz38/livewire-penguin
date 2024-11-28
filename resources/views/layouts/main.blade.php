@@ -18,7 +18,7 @@
         @livewireStyles
     </head>
     <body class="font-sans antialiased">
-        <div x-data="{ sidebarIsOpen: false }" class="relative flex w-full flex-col md:flex-row">
+        <div x-data="{ sidebarIsOpen: false }" class="relative flex flex-col w-full md:flex-row">
             <!-- This allows screen readers to skip the sidebar and go directly to the main content. -->
             <a class="sr-only" href="#main-content">skip to the main content</a>
 
@@ -28,7 +28,7 @@
         @include('components.penguin.sidebar')
         <x-banner />
 
-        <div class="h-svh w-full overflow-y-auto bg-zinc-50 dark:bg-zinc-900">
+        <div class="w-full overflow-y-auto h-svh bg-zinc-50 dark:bg-zinc-900">
             <!-- top navbar  -->
             @include('components.penguin.topnav')
             <!-- main content  -->
@@ -43,5 +43,7 @@
         @stack('modals')
 
         @livewireScripts
+
+        @stack('scripts')
     </body>
 </html>

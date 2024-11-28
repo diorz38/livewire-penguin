@@ -6,7 +6,7 @@
         <x-wiredate wire:model.live="startDate"/>
         <x-wiredate wire:model.live="endDate"/>
         {{ $startDate }} - {{ $endDate }}
-        <x-wire-combobox :options="$options" property="merk" />
+        <x-wire-combobox :options="$options" property="merk"/>
         {{ $merk }}
     </div>
 
@@ -102,5 +102,7 @@
         </table>
     </div>
 
+    <x-wire-apex-chart :chartData="$chartData"/>
+    {{ json_encode($chartData) }}
 </div>
 
