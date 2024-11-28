@@ -26,6 +26,7 @@ class Index extends Component
             'values' => [4000, 380, 340, 21, 2200, 1100, 2100, 600, 80, 900, 10, 155]
         ];
         return view('livewire.user-management.index', [
+            'title' => 'User Management',
             'startDate' => $this->startDate,
             'endDate' => $this->endDate,
             'merk' => $this->merk,

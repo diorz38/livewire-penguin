@@ -29,7 +29,7 @@ Everyone can contribute to this StarterKit.
 
 ## Security Vulnerabilities
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [budiyunior@gmail.com](mailto:budiyunior@gmail.com). All security vulnerabilities will be promptly addressed.
+If you discover a security vulnerability within Laravel, please send an e-mail to me via [budiyunior@gmail.com](mailto:budiyunior@gmail.com). All security vulnerabilities will be promptly addressed.
 
 ## License
 
