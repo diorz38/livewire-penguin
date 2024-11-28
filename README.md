@@ -12,6 +12,10 @@ This StarterLit made for speed-up laravel development with livewire and AlpineJS
 - [Livewire 3 with AlpineJS intergared](https://livewire.laravel.com).
 - [Jetstream](https://jetstream.laravel.com).
 
+Component that intergrated with Livewire:
+- Combobox with search
+- Apex Chart
+- Flatpickr
 
 This StarterKit is accessible, fun to work with, and provides tools required for build Laravel application.
 
