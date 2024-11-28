@@ -2,10 +2,18 @@
     @section('title')
         {{ $title }}
     @endsection
+    <div class="flex flex-row items-center gap-2 py-3">
+        <x-wiredate wire:model.live="startDate"/>
+        <x-wiredate wire:model.live="endDate"/>
+        {{ $startDate }} - {{ $endDate }}
+        <x-wire-combobox :options="$options" property="merk" />
+        {{ $merk }}
+    </div>
 
-    <div class="overflow-hidden w-full overflow-x-auto rounded border border-zinc-300 dark:border-zinc-700">
-        <table class="w-full text-left text-sm text-neutral-600 dark:text-zinc-200">
-            <thead class="border-b border-zinc-300 bg-zinc-100 text-sm text-neutral-900 dark:border-zinc-700 dark:bg-zinc-800 dark:text-zinc-50">
+
+    <div class="w-full overflow-hidden overflow-x-auto border rounded border-zinc-300 dark:border-zinc-700">
+        <table class="w-full text-sm text-left text-neutral-600 dark:text-zinc-200">
+            <thead class="text-sm border-b border-zinc-300 bg-zinc-100 text-neutral-900 dark:border-zinc-700 dark:bg-zinc-800 dark:text-zinc-50">
                 <tr>
                     <th scope="col" class="p-4">User</th>
                     <th scope="col" class="p-4">ID</th>
@@ -17,8 +25,8 @@
             <tbody class="divide-y divide-zinc-300 dark:divide-zinc-700">
                 <tr>
                     <td class="p-4">
-                        <div class="flex w-max items-center gap-2">
-                            <img class="size-10 rounded-full object-cover" src="https://penguinui.s3.amazonaws.com/component-assets/avatar-8.webp" alt="user avatar" />
+                        <div class="flex items-center gap-2 w-max">
+                            <img class="object-cover rounded-full size-10" src="https://penguinui.s3.amazonaws.com/component-assets/avatar-8.webp" alt="user avatar" />
                             <div class="flex flex-col">
                                 <span class="text-neutral-900 dark:text-zinc-50">Alice Brown</span>
                                 <span class="text-sm text-neutral-600 opacity-85 dark:text-zinc-200">alice.brown@gmail.com</span>
@@ -32,8 +40,8 @@
                 </tr>
                 <tr>
                     <td class="p-4">
-                        <div class="flex w-max items-center gap-2">
-                            <img class="size-10 rounded-full object-cover" src="https://penguinui.s3.amazonaws.com/component-assets/avatar-1.webp" alt="user avatar" />
+                        <div class="flex items-center gap-2 w-max">
+                            <img class="object-cover rounded-full size-10" src="https://penguinui.s3.amazonaws.com/component-assets/avatar-1.webp" alt="user avatar" />
                             <div class="flex flex-col">
                                 <span class="text-neutral-900 dark:text-zinc-50">Bob Johnson</span>
                                 <span class="text-sm text-neutral-600 opacity-85 dark:text-zinc-200">johnson.bob@penguinui.com</span>
@@ -47,8 +55,8 @@
                 </tr>
                 <tr>
                     <td class="p-4">
-                        <div class="flex w-max items-center gap-2">
-                            <img class="size-10 rounded-full object-cover" src="https://penguinui.s3.amazonaws.com/component-assets/avatar-2.webp" alt="user avatar" />
+                        <div class="flex items-center gap-2 w-max">
+                            <img class="object-cover rounded-full size-10" src="https://penguinui.s3.amazonaws.com/component-assets/avatar-2.webp" alt="user avatar" />
                             <div class="flex flex-col">
                                 <span class="text-neutral-900 dark:text-zinc-50">Ryan Thompson</span>
                                 <span class="text-sm text-neutral-600 opacity-85 dark:text-zinc-200">ryan.thompson@penguinui.com</span>
@@ -62,8 +70,8 @@
                 </tr>
                 <tr>
                     <td class="p-4">
-                        <div class="flex w-max items-center gap-2">
-                            <img class="size-10 rounded-full object-cover" src="https://penguinui.s3.amazonaws.com/component-assets/avatar-4.webp" alt="user avatar" />
+                        <div class="flex items-center gap-2 w-max">
+                            <img class="object-cover rounded-full size-10" src="https://penguinui.s3.amazonaws.com/component-assets/avatar-4.webp" alt="user avatar" />
                             <div class="flex flex-col">
                                 <span class="text-neutral-900 dark:text-zinc-50">Emily Rodriguez</span>
                                 <span class="text-sm text-neutral-600 opacity-85 dark:text-zinc-200">emily.rodriguez@penguinui.com</span>
@@ -77,8 +85,8 @@
                 </tr>
                 <tr>
                     <td class="p-4">
-                        <div class="flex w-max items-center gap-2">
-                            <img class="size-10 rounded-full object-cover" src="https://penguinui.s3.amazonaws.com/component-assets/avatar-7.webp" alt="user avatar" />
+                        <div class="flex items-center gap-2 w-max">
+                            <img class="object-cover rounded-full size-10" src="https://penguinui.s3.amazonaws.com/component-assets/avatar-7.webp" alt="user avatar" />
                             <div class="flex flex-col">
                                 <span class="text-neutral-900 dark:text-zinc-50">Alex Martinez</span>
                                 <span class="text-sm text-neutral-600 opacity-85 dark:text-zinc-200">alex.martinez@penguinui.com</span>
@@ -95,3 +103,4 @@
     </div>
 
 </div>
+
