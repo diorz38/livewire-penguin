@@ -2,8 +2,7 @@
     @section('title')
         {{ $title }}
     @endsection
-    <div class="flex flex-row items-center gap-2 py-3">
-        <div class="flex ">
+    <div class="flex flex-row justify-between w-full gap-2 py-3 lg:w-3/4 items-top">
             <div class="flex flex-row items-center mb-3 space-x-4">
                 <label class="text-sm font-medium text-gray-900 w-14 dark:text-white">Per Hal</label>
                 <select wire:model.live='perPage'
@@ -14,11 +13,11 @@
                     <option value="20">20</option>
                 </select>
             </div>
-        </div>
+            <livewire:user-management.create />
     </div>
 
 
-    <div class="items-center w-3/4 overflow-hidden overflow-x-auto border rounded border-zinc-300 dark:border-zinc-700">
+    <div class="items-center w-full overflow-hidden overflow-x-auto border rounded lg:w-3/4 border-zinc-300 dark:border-zinc-700">
         <table class="w-full text-sm text-left text-neutral-600 dark:text-zinc-200">
             <thead class="text-sm border-b border-zinc-300 bg-zinc-100 text-neutral-900 dark:border-zinc-700 dark:bg-zinc-800 dark:text-zinc-50">
                 <tr>
@@ -63,7 +62,13 @@
                         @endif
                     </td>
                     <td class="p-4">{{ $item->getPermissionNames()->implode(',') }}</td>
-                    <td class="p-4"><button type="button" class="cursor-pointer whitespace-nowrap rounded bg-transparent p-0.5 font-semibold text-sky-700 outline-sky-700 hover:opacity-75 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 active:opacity-100 active:outline-offset-0 dark:text-sky-600 dark:outline-sky-600">Edit</button></td>
+                    <td class="p-4">
+                        <button type="button"
+                            @click="$dispatch('dispatch-user-table-edit', {id: '{{ $item->id }}'})"
+                            class="cursor-pointer whitespace-nowrap rounded bg-transparent p-0.5 font-semibold text-sky-700 outline-sky-700 hover:opacity-75 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 active:opacity-100 active:outline-offset-0 dark:text-sky-600 dark:outline-sky-600">
+                            Edit
+                        </button>
+                    </td>
                 </tr>
                 @empty
                     <tr>

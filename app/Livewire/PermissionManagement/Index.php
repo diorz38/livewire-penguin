@@ -9,7 +9,7 @@ class Index extends Component
     public function render()
     {
         return view('livewire.permission-management.index',[
-            'title'  => 'Permissions'
+            'title'  => 'Roles & Permissions'
         ]);
     }
 }

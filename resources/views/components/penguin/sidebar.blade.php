@@ -81,8 +81,9 @@
                             @if (Route::is('user-management.users.index')) {{ 'bg-sky-700/10' }} @endif">Users</a>
                     </li>
                     <li class="px-1 py-0.5 first:mt-2">
-                        <a href="#"
-                            class="flex items-center rounded gap-2 px-2 py-1.5 text-sm text-neutral-600 underline-offset-2 hover:bg-sky-700/5 hover:text-neutral-900 focus:outline-none focus-visible:underline dark:text-zinc-200 dark:hover:bg-sky-600/5 dark:hover:text-zinc-50">Permissions</a>
+                        <a wire:navigate href="{{ route('user-management.permissions.index') }}"
+                            class="flex items-center rounded gap-2 px-2 py-1.5 text-sm text-neutral-600 underline-offset-2 hover:bg-sky-700/5 hover:text-neutral-900 focus:outline-none focus-visible:underline dark:text-zinc-200 dark:hover:bg-sky-600/5 dark:hover:text-zinc-50
+                            @if (Route::is('user-management.permissions.index')) {{ 'bg-sky-700/10' }} @endif">Permissions</a>
                     </li>
                     <li class="px-1 py-0.5 first:mt-2">
                         <a href="#"
