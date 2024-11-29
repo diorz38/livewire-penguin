@@ -1,8 +1,8 @@
     <nav x-cloak
-        class="fixed left-0 z-30 flex h-svh w-60 shrink-0 flex-col border-r border-zinc-300 bg-zinc-100 p-4 transition-transform duration-300 md:w-64 md:translate-x-0 md:relative dark:border-zinc-700 dark:bg-zinc-800"
+        class="fixed left-0 z-30 flex flex-col p-4 transition-transform duration-300 border-r h-svh w-60 shrink-0 border-zinc-300 bg-zinc-100 md:w-64 md:translate-x-0 md:relative dark:border-zinc-700 dark:bg-zinc-800"
         x-bind:class="sidebarIsOpen ? 'translate-x-0' : '-translate-x-60'" aria-label="sidebar navigation">
         <!-- logo  -->
-        <a href="#" class="ml-2 w-fit text-2xl font-bold text-neutral-900 dark:text-zinc-50">
+        <a href="#" class="ml-2 text-2xl font-bold w-fit text-neutral-900 dark:text-zinc-50">
             <span class="sr-only">homepage</span>
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 376 155" fill="none" class="w-24" aria-hidden="true">
                 <path
@@ -23,10 +23,10 @@
         </a>
 
         <!-- search  -->
-        <div class="relative my-4 flex w-full max-w-xs flex-col gap-1 text-neutral-600 dark:text-zinc-200">
+        <div class="relative flex flex-col w-full max-w-xs gap-1 my-4 text-neutral-600 dark:text-zinc-200">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke="currentColor" fill="none"
                 stroke-width="2"
-                class="absolute left-2 top-1/2 size-5 -translate-y-1/2 text-neutral-600/50 dark:text-zinc-200/50"
+                class="absolute -translate-y-1/2 left-2 top-1/2 size-5 text-neutral-600/50 dark:text-zinc-200/50"
                 aria-hidden="true">
                 <path stroke-linecap="round" stroke-linejoin="round"
                     d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z" />
@@ -37,7 +37,7 @@
         </div>
 
         <!-- sidebar links  -->
-        <div class="flex flex-col gap-2 overflow-y-auto pb-6">
+        <div class="flex flex-col gap-2 pb-6 overflow-y-auto">
 
             <a wire:navigate href="{{ route('dashboard') }}"
                 class="flex items-center rounded gap-2 px-2 py-1.5 text-sm font-medium text-neutral-600 underline-offset-2 hover:bg-sky-700/5 hover:text-neutral-900 focus-visible:underline focus:outline-none dark:text-zinc-200 dark:hover:bg-sky-600/5 dark:hover:text-zinc-50
@@ -65,7 +65,7 @@
                     </svg>
                     <span class="mr-auto text-left">User Management</span>
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"
-                        class="size-5 transition-transform rotate-0 shrink-0"
+                        class="transition-transform rotate-0 size-5 shrink-0"
                         x-bind:class="isExpanded ? 'rotate-180' : 'rotate-0'" aria-hidden="true">
                         <path fill-rule="evenodd"
                             d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z"
@@ -106,7 +106,7 @@
                     </svg>
                     <span class="mr-auto text-left">Products</span>
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"
-                        class="size-5 transition-transform rotate-0 shrink-0"
+                        class="transition-transform rotate-0 size-5 shrink-0"
                         x-bind:class="isExpanded ? 'rotate-180' : 'rotate-0'" aria-hidden="true">
                         <path fill-rule="evenodd"
                             d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z"
@@ -147,7 +147,7 @@
                     </svg>
                     <span class="mr-auto text-left">Orders</span>
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"
-                        class="size-5 transition-transform rotate-0 shrink-0"
+                        class="transition-transform rotate-0 size-5 shrink-0"
                         x-bind:class="isExpanded ? 'rotate-180' : 'rotate-0'" aria-hidden="true">
                         <path fill-rule="evenodd"
                             d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z"
