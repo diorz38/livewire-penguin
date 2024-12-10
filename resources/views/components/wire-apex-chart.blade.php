@@ -78,7 +78,7 @@
                     },
                     yaxis: {
                         title: {
-                            text: "Yaxis ($)"
+                            text: "Yaxis"
                         },
                         labels: {
                             formatter: (value) => {

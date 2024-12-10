@@ -4,6 +4,8 @@ namespace App\Providers;
 
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
+use Illuminate\Support\Facades\Gate;
+
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -22,5 +24,9 @@ class AppServiceProvider extends ServiceProvider
     {
         $defaultTitle = 'Mobil Japek';
         View::share('title', $defaultTitle);
+
+        Gate::before(function ($user, $ability) {
+            return $user->hasRole('super-admin') || $user->hasRole('admin') ? true : null;
+        });
     }
 }

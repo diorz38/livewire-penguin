@@ -13,7 +13,7 @@ Route::middleware([
     Route::get('/dashboard', function () {
         return view('dashboard');
     })->name('dashboard');
-    Route::group(['middleware' => ['role:super-admin']], function () {
+    Route::group(['middleware' => ['role:super-admin|admin']], function () {
         Route::get('/user-management/users', App\Livewire\UserManagement\Index::class)->name('user-management.users.index');
         Route::get('/user-management/permissions', App\Livewire\PermissionManagement\Index::class)->name('user-management.permissions.index');
     });

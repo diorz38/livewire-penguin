@@ -28,7 +28,7 @@
         }
     },
 }" class="flex flex-col w-full max-w-xs gap-1" x-on:keydown="handleKeydownOnOptions($event)" x-on:keydown.esc.window="isOpen = false, openedWithKeyboard = false" x-init="options = allOptions">
-{{-- <label for="make" class="w-fit pl-0.5 text-sm text-neutral-600 dark:text-neutral-300">Make</label> --}}
+
 <div class="relative">
 
     <!-- trigger button  -->

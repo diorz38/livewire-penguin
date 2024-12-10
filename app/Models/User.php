@@ -66,4 +66,13 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+
+    public function before(User $user, string $ability): ?bool
+    {
+        if ($user->hasRole('admin') || $user->hasRole('Super Admin')) {
+            return true;
+        }
+
+        return null; // see the note above in Gate::before about why null must be returned here.
+    }
 }

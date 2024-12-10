@@ -3,7 +3,17 @@
 
     <x-dialog-modal wire:model.live="modalUserCreate" submit="save">
         <x-slot name="title">
-            Pengguna baru
+            <div class="flex items-center justify-between border-zinc-300 bg-zinc-100/60 p-4 dark:border-zinc-700 dark:bg-zinc-900/20">
+                <h3 id="defaultModalTitle" class="font-semibold tracking-wide text-neutral-900 dark:text-zinc-50">
+                    Pengguna baru
+                </h3>
+                <button @click="$wire.set('modalUserCreate', false)" aria-label="close modal">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" stroke="currentColor" fill="none" stroke-width="1.4" class="w-5 h-5">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/>
+                    </svg>
+                </button>
+            </div>
+
         </x-slot>
 
         <x-slot name="content">
