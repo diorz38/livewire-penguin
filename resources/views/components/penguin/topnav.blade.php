@@ -1,4 +1,4 @@
-<nav class="sticky top-0 z-10 flex items-center justify-between border-b border-zinc-300 bg-zinc-100 px-4 py-2 dark:border-zinc-700 dark:bg-zinc-800" aria-label="top navibation bar">
+<nav class="sticky top-0 z-10 flex items-center justify-between border-b border-zinc-300 backdrop-blur-md bg-zinc-100/20 px-4 py-2 dark:border-zinc-700 dark:bg-zinc-800" aria-label="top navibation bar">
 
     <!-- sidebar toggle button for small screens  -->
     <button type="button" class="md:hidden inline-block text-neutral-600 dark:text-zinc-200" x-on:click="sidebarIsOpen = true">

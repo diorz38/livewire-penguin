@@ -1,13 +1,13 @@
-<div class="px-20 col-span-full xl:col-span-12 dark:bg-gray-800">
-
+{{-- <div class="px-20 col-span-full xl:col-span-12 dark:bg-gray-800"> --}}
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-6 lg:px-16 gap-2">
         <!-- Table -->
-        <div class="overflow-x-auto">
-            <div class="flex flex-wrap justify-between mt-5">
+        {{-- <div class="overflow-x-auto">
+            <div class="flex flex-wrap justify-between mt-5"> --}}
 
                 @foreach ($data as $item)
                 <div class="max-w-sm py-2">
                     <div class="flex flex-col h-full p-8 bg-white rounded-lg shadow-md dark:bg-gray-800">
-                        <div class="flex items-center justify-between mb-3">
+                        <div class="flex items-center justify-between mb-3 w-full">
                             <h2 class="mr-2 text-lg font-medium text-gray-700 dark:text-white">{{ $item->name }}</h2>
                             @if($item->name != "super-admin" || $item->name != "admin" || \Auth::user()->roles == "admin" || \Auth::user()->roles == "super-admin")
                             <div>
@@ -41,6 +41,6 @@
                 </div>
                 @endforeach
 
-            </div>
-        </div>
+            {{-- </div>
+        </div> --}}
 </div>
