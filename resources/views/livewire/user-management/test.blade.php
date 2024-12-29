@@ -9,7 +9,7 @@
         <x-wire-combobox-single :options="$merkMobil" property="merk"/>
         <x-wire-combobox :options="$options" selectedOption="selectedOption"/>
         {{ $merk }}
-        ({{ $selectedOptionValue }}) @if($selectedOption != null) {{ $selectedOption['label'] }} @endif
+        @if($selectedOption != null) ({{ $selectedOptionValue }}) {{ $selectedOption['label'] }} @endif
     </div>
 
 

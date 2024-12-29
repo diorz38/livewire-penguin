@@ -43,7 +43,16 @@
         @stack('modals')
 
         @livewireScripts
-
+        <script>
+            document.addEventListener(typeof Alpine === 'undefined' ? 'alpine:init' : 'livewire:navigated', function() {
+                console.log(typeof Alpine === 'undefined'? 'alpine init ' : 'livewire:navigated');
+                Alpine.data('test', () => ({
+                    init() {
+                        console.log('initiating Alpine');
+                    },
+                }))
+            }, { once: true });
+            </script>
         @stack('scripts')
     </body>
 </html>
