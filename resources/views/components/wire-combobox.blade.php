@@ -1,19 +1,19 @@
-@props(['options', 'property'])
+@props(['options', 'selectedOption'])
 <div x-data="{
     allOptions: @js($options),
-    options: @js($options),
+    options: [],
     isOpen: false,
     openedWithKeyboard: false,
-    selectedOption: @entangle($property).live,
+    selectedOption: @entangle($selectedOption).live,
     setSelectedOption(option) {
         this.selectedOption = option
         this.isOpen = false
         this.openedWithKeyboard = false
-        this.$refs.hiddenTextField = option
+        this.$refs.hiddenTextField.value = option.value
     },
     getFilteredOptions(query) {
         this.options = this.allOptions.filter((option) =>
-            option.toLowerCase().includes(query.toLowerCase()),
+            option.label.toLowerCase().includes(query.toLowerCase()),
         )
         if (this.options.length === 0) {
             this.$refs.noResultsMessage.classList.remove('hidden')
@@ -27,49 +27,72 @@
             this.$refs.searchField.focus()
         }
     },
-}" class="flex flex-col w-full max-w-xs gap-1" x-on:keydown="handleKeydownOnOptions($event)" x-on:keydown.esc.window="isOpen = false, openedWithKeyboard = false" x-init="options = allOptions">
+}" class="flex w-full max-w-xs flex-col gap-1" x-on:keydown="handleKeydownOnOptions($event)"
+    x-on:keydown.esc.window="isOpen = false, openedWithKeyboard = false" x-init="options = allOptions">
+    <div class="relative">
 
-<div class="relative">
-
-    <!-- trigger button  -->
-    <button type="button" class="inline-flex items-center justify-between w-full gap-2 px-4 py-2 text-sm font-medium tracking-wide transition border rounded-md border-neutral-300 bg-neutral-50 text-neutral-600 hover:opacity-75 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black dark:border-neutral-700 dark:bg-neutral-900/50 dark:text-neutral-300 dark:focus-visible:outline-white" role="combobox" aria-controls="makesList" aria-haspopup="listbox" x-on:click="isOpen = ! isOpen" x-on:keydown.down.prevent="openedWithKeyboard = true" x-on:keydown.enter.prevent="openedWithKeyboard = true" x-on:keydown.space.prevent="openedWithKeyboard = true" x-bind:aria-expanded="isOpen || openedWithKeyboard" x-bind:aria-label="selectedOption ? selectedOption.value : 'Please Select'" >
-        <span class="text-sm font-normal" x-text="selectedOption ? selectedOption : 'Please Select'"></span>
-        <!-- Chevron  -->
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"class="size-5" aria-hidden="true">
-            <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd"/>
-        </svg>
-    </button>
-
-    <!-- Hidden Input To Grab The Selected Value  -->
-    <input id="make" name="make" x-ref="hiddenTextField" hidden=""/>
-    <div x-show="isOpen || openedWithKeyboard" id="makesList" class="absolute left-0 z-10 w-full overflow-hidden border rounded-md top-11 border-neutral-300 bg-neutral-50 dark:border-neutral-700 dark:bg-neutral-900" role="listbox" aria-label="industries list" x-on:click.outside="isOpen = false, openedWithKeyboard = false" x-on:keydown.down.prevent="$focus.wrap().next()" x-on:keydown.up.prevent="$focus.wrap().previous()" x-transition x-trap="openedWithKeyboard">
-
-        <!-- Search  -->
-        <div class="relative">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke="currentColor" fill="none" stroke-width="1.5" class="absolute -translate-y-1/2 left-4 top-1/2 size-5 text-neutral-600/50 dark:text-neutral-300/50" aria-hidden="true" >
-                <path stroke-linecap="round" stroke-linejoin="round" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z"/>
+        <!-- trigger button  -->
+        <button type="button"
+            class="inline-flex w-full items-center justify-between gap-2 border border-slate-300 rounded-lg bg-slate-100 px-4 py-2 text-sm font-medium tracking-wide text-slate-700 transition hover:opacity-75 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-700 dark:border-slate-700 dark:bg-slate-800/50 dark:text-slate-300 dark:focus-visible:outline-blue-600"
+            role="combobox" aria-controls="makesList" aria-haspopup="listbox" x-on:click="isOpen = ! isOpen"
+            x-on:keydown.down.prevent="openedWithKeyboard = true" x-on:keydown.enter.prevent="openedWithKeyboard = true"
+            x-on:keydown.space.prevent="openedWithKeyboard = true" x-bind:aria-expanded="isOpen || openedWithKeyboard"
+            x-bind:aria-label="selectedOption ? selectedOption.value : 'Please Select'">
+            <span class="text-sm font-normal" x-text="selectedOption ? selectedOption.label : 'Please Select'"></span>
+            <!-- Chevron  -->
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"class="size-5"
+                aria-hidden="true">
+                <path fill-rule="evenodd"
+                    d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z"
+                    clip-rule="evenodd" />
             </svg>
-            <input type="text" class="w-full border-b borderneutral-300 bg-neutral-50 py-2.5 pl-11 pr-4 text-sm text-neutral-600 focus:outline-none focus-visible:border-black disabled:cursor-not-allowed disabled:opacity-75 dark:border-neutral-700 dark:bg-neutral-900 dark:text-neutral-300 dark:focus-visible:border-white" name="searchField" aria-label="Search" x-on:input="getFilteredOptions($el.value)" x-ref="searchField" placeholder="Search" />
-        </div>
+        </button>
 
-        <!-- Options  -->
-        <ul class="flex flex-col overflow-y-auto max-h-44">
-            <li class="hidden px-4 py-2 text-sm text-neutral-600 dark:text-neutral-300" x-ref="noResultsMessage">
-                <span>No matches found</span>
-            </li>
-            <template x-for="(item, index) in options" x-bind:key="item">
-                <li class="inline-flex justify-between gap-6 px-4 py-2 text-sm cursor-pointer combobox-option bg-neutral-50 text-neutral-600 hover:bg-neutral-900/5 hover:text-neutral-900 focus-visible:bg-neutral-900/5 focus-visible:text-neutral-900 focus-visible:outline-none dark:bg-neutral-900 dark:text-neutral-300 dark:hover:bg-neutral-50/5 dark:hover:text-white dark:focus-visible:bg-neutral-50/10 dark:focus-visible:text-white" role="option" x-on:click="setSelectedOption(item)" x-on:keydown.enter="setSelectedOption(item)" x-bind:id="'option-' + index" tabindex="0">
-                    <!-- Label  -->
-                    <span x-bind:class="selectedOption == item ? 'font-bold' : null" x-text="item"></span>
-                    <!-- Screen reader 'selected' indicator  -->
-                    <span class="sr-only" x-text="selectedOption == item ? 'selected' : null"></span>
-                    <!-- Checkmark  -->
-                    <svg x-cloak x-show="selectedOption == item" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke="currentColor" fill="none" stroke-width="2" class="size-4" aria-hidden="true">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5">
-                    </svg>
+        <!-- Hidden Input To Grab The Selected Value  -->
+        <input id="make" name="make" x-ref="hiddenTextField" hidden="" />
+        <div x-show="isOpen || openedWithKeyboard" id="makesList"
+            class="absolute left-0 top-11 z-10 w-full overflow-hidden rounded-xl border border-slate-300 bg-slate-100 dark:border-slate-700 dark:bg-slate-800"
+            role="listbox" aria-label="industries list" x-on:click.outside="isOpen = false, openedWithKeyboard = false"
+            x-on:keydown.down.prevent="$focus.wrap().next()" x-on:keydown.up.prevent="$focus.wrap().previous()"
+            x-transition x-trap="openedWithKeyboard">
+
+            <!-- Search  -->
+            <div class="relative">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke="currentColor" fill="none"
+                    stroke-width="1.5"
+                    class="absolute left-4 top-1/2 size-5 -translate-y-1/2 text-slate-700/50 dark:text-slate-300/50"
+                    aria-hidden="true">
+                    <path stroke-linecap="round" stroke-linejoin="round"
+                        d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z" />
+                </svg>
+                <input type="text"
+                    class="w-full border-b borderslate-300 bg-slate-100 py-2.5 pl-11 pr-4 text-sm text-slate-700 focus:outline-none focus-visible:border-blue-700 disabled:cursor-not-allowed disabled:opacity-75 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-300 dark:focus-visible:border-blue-600"
+                    name="searchField" aria-label="Search" x-on:input="getFilteredOptions($el.value)"
+                    x-ref="searchField" placeholder="Search" />
+            </div>
+
+            <!-- Options  -->
+            <ul class="flex max-h-44 flex-col overflow-y-auto bg-white">
+                <li class="hidden px-4 py-2 text-sm text-slate-700 dark:text-slate-300" x-ref="noResultsMessage">
+                    <span>No matches found</span>
                 </li>
-            </template>
-        </ul>
+                <template x-for="(item, index) in options" x-bind:key="item.value">
+                    <li class="combobox-option inline-flex cursor-pointer justify-between gap-6 bg-slate-100 px-4 py-2 text-sm text-slate-700 hover:bg-slate-800/5 hover:text-black focus-visible:bg-slate-800/5 focus-visible:text-black focus-visible:outline-none dark:bg-slate-800 dark:text-slate-300 dark:hover:bg-slate-100/5 dark:hover:text-white dark:focus-visible:bg-slate-100/10 dark:focus-visible:text-white"
+                        role="option" x-on:click="setSelectedOption(item)" x-on:keydown.enter="setSelectedOption(item)"
+                        x-bind:id="'option-' + index" tabindex="0">
+                        <!-- Label  -->
+                        <span x-bind:class="selectedOption == item ? 'font-bold' : null" x-text="item.label"></span>
+                        <!-- Screen reader 'selected' indicator  -->
+                        <span class="sr-only" x-text="selectedOption == item ? 'selected' : null"></span>
+                        <!-- Checkmark  -->
+                        <svg x-cloak x-show="selectedOption == item" xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 24 24" stroke="currentColor" fill="none" stroke-width="2" class="size-4"
+                            aria-hidden="true">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5">
+                        </svg>
+                    </li>
+                </template>
+            </ul>
+        </div>
     </div>
-</div>
 </div>

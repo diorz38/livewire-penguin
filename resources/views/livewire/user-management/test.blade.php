@@ -6,8 +6,10 @@
         <x-wiredate wire:model.live="startDate"/>
         <x-wiredate wire:model.live="endDate"/>
         {{ $startDate }} - {{ $endDate }}
-        <x-wire-combobox :options="$options" property="merk"/>
+        <x-wire-combobox-single :options="$merkMobil" property="merk"/>
+        <x-wire-combobox :options="$options" selectedOption="selectedOption"/>
         {{ $merk }}
+        ({{ $selectedOptionValue }}) @if($selectedOption != null) {{ $selectedOption['label'] }} @endif
     </div>
 
 
