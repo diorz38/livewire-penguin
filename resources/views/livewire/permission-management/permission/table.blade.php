@@ -1,12 +1,8 @@
 <div class="col-span-full xl:col-span-12 dark:bg-gray-600">
-    {{-- <header class="px-5 py-4 border-b border-gray-100 dark:border-gray-700/60">
-        <h2 class="font-semibold text-gray-800 dark:text-gray-100">Daftar Pengguna</h2>
-    </header> --}}
-    {{-- <div class="p-3"> --}}
 
         <!-- Table -->
         <div class="overflow-x-auto">
-            <div class="flex flex-wrap justify-start px-20 mt-5 ">
+            <div class="flex flex-wrap justify-start mt-5">
 
                 @foreach ($data as $item)
                 <div class="max-w-sm py-6 pr-4">
