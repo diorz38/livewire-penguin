@@ -1,5 +1,5 @@
 <div class="print:!hidden">
-    <span><x-button @click="$wire.set('modalPermissionCreate', true)">Tambah Izin</x-button></span>
+    <span class="mt-4"><x-button @click="$wire.set('modalPermissionCreate', true)">Tambah Izin</x-button></span>
 
     <x-dialog-modal wire:model.live="modalPermissionCreate" submit="save">
         <x-slot name="title">

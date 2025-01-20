@@ -2,6 +2,22 @@
     @section('title')
         {{ $title }}
     @endsection
+    <div>
+        <div class="grid grid-cols-1 gap-2 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-2 2xl:grid-cols-2">
+            {{-- <div> --}}
+                <livewire:permission-management.create />
+            {{-- </div>
+            <div> --}}
+                <livewire:permission-management.permission.create />
+            {{-- </div> --}}
+        </div>
+    </div>
+    <livewire:permission-management.edit />
+    <livewire:permission-management.delete />
+
+    <livewire:permission-management.permission.edit />
+    <livewire:permission-management.permission.delete />
+
     <div x-data="{ selectedTab: 'groups' }" class="w-full">
         <div @keydown.right.prevent="$focus.wrap().next()" @keydown.left.prevent="$focus.wrap().previous()"
             class="flex gap-2 overflow-x-auto border-b border-stone-300 dark:border-stone-700" role="tablist"
@@ -39,15 +55,14 @@
         </div>
         <div class="px-2 py-4 text-stone-800 dark:text-stone-300">
             <div x-show="selectedTab === 'groups'" id="tabpanelGroups" role="tabpanel" aria-label="groups">
-                <livewire:permission-management.create />
                 <div>
                     <livewire:permission-management.table />
-                    <livewire:permission-management.edit />
-                    <livewire:permission-management.delete />
                 </div>
             </div>
             <div x-show="selectedTab === 'likes'" id="tabpanelLikes" role="tabpanel" aria-label="likes">
-                <livewire:permission-management.permission.index />
+                <div>
+                    <livewire:permission-management.permission.table />
+                </div>
             </div>
         </div>
     </div>

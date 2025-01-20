@@ -3,7 +3,15 @@
 
     <x-dialog-modal wire:model.live="modalRoleCreate" submit="save">
         <x-slot name="title">
-            Peran baru
+            <div class="flex items-center justify-between p-4 bg-stone-200/60 dark:bg-stone-950/20">
+                <h3 id="defaultModalTitle" class="font-semibold tracking-wide text-black dark:text-white">
+                    Peran baru
+                </h3>
+                <button @click="$wire.set('modalRoleCreate', false)" aria-label="close modal">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" stroke="currentColor" fill="none" stroke-width="1.4" class="w-5 h-5">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/>
+                    </svg>
+                </button>
         </x-slot>
 
         <x-slot name="content">
